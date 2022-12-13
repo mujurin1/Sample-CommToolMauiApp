@@ -1,37 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
+<ContentPage
+    x:Class="CommToolMauiApp.Views.CounterPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodel="clr-namespace:CommToolMauiApp.ViewModels"
-    x:Class="CommToolMauiApp.Views.CounterPage"
     x:DataType="viewmodel:CounterViewModel">
 
     <ScrollView>
-        <VerticalStackLayout Spacing="25" Padding="30">
+        <VerticalStackLayout Padding="30" Spacing="25">
             <Image
-                Source="dotnet_bot.png"
-                HorizontalOptions="Center" 
-                WidthRequest="200"
                 HeightRequest="300"
-                Rotation="{Binding Rotation}"/>
-            <Label 
-                Text="{Binding Count, StringFormat='🍥Current: {0}🍥'}"
                 HorizontalOptions="Center"
+                Rotation="{Binding Rotation}"
+                Source="dotnet_bot.png"
+                WidthRequest="200" />
+            <Label
+                FontAttributes="Bold"
                 FontSize="18"
-                FontAttributes="Bold"/>
-            <StackLayout
-                Orientation="Horizontal"
-                HorizontalOptions="Center" >
-                <Button 
-                    Text="Count"
+                HorizontalOptions="Center"
+                Text="{Binding Count, StringFormat='🍥Current: {0}🍥'}" />
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                <Button
+                    Command="{Binding IncrementCommand}"
                     HorizontalOptions="Center"
                     SemanticProperties.Hint="Counts the number of times you click"
-                    Command="{Binding IncrementCommand}"/>
-                <Button 
-                    Text="Clear"
-                    HorizontalOptions="Center" 
+                    Text="Count" />
+                <Button
+                    Command="{Binding ClearCommand}"
+                    HorizontalOptions="Center"
                     SemanticProperties.Hint="Clears the number of times you click"
-                    Command="{Binding ClearCommand}"/>
+                    Text="Clear" />
             </StackLayout>
         </VerticalStackLayout>
     </ScrollView>

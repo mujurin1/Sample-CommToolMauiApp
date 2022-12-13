@@ -1,77 +1,103 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
+<ContentPage
+    x:Class="CommToolMauiApp.Views.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:viewmodel="clr-namespace:CommToolMauiApp.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:model="clr-namespace:CommToolMauiApp.Model"
-    x:Class="CommToolMauiApp.Views.MainPage"
+    xmlns:viewmodel="clr-namespace:CommToolMauiApp.ViewModels"
+    x:Name="_this"
+    Title="HOME"
     x:DataType="viewmodel:MainViewModel"
-    Title="HOME">
+    mc:Ignorable="d">
 
-    <Grid 
-        RowDefinitions="Auto, *"
-        ColumnDefinitions=".75*, .25*"
+    <Grid
         Padding="10"
-        RowSpacing="10"
-        ColumnSpacing="10">
+        ColumnDefinitions=".75*, .25*"
+        ColumnSpacing="10"
+        RowDefinitions="Auto, *"
+        RowSpacing="10">
+
         <Entry
             Grid.Row="0"
             Grid.Column="0"
-            Placeholder="Enter item name"
-            Text="{Binding Text}"/>
+            Placeholder="アイテム名を入れてね"
+            Text="{Binding Text}" />
         <Button
             Grid.Row="0"
             Grid.Column="1"
-            Text="Add"
-            Command="{Binding AddCommand}"/>
-        <CollectionView 
+            Command="{Binding AddCommand}"
+            Text="Add" />
+        <CollectionView
             Grid.Row="1"
             Grid.ColumnSpan="2"
             ItemsSource="{Binding Items}">
+
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Item">
-                    <Frame
-                        HeightRequest="70"
-                        Padding="5">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=NavigateCommand}"
-                                CommandParameter="{Binding .}"/>
-                        </Frame.GestureRecognizers>
-                        <Grid
-                            Padding="5, 0" 
-                            ColumnDefinitions="*, .25*">
+
+                    <Border Padding="5" HeightRequest="70">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5" />
+                        </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BindingContext.NavigateCommand, Source={x:Reference _this}}" CommandParameter="{Binding}" />
+                        </Border.GestureRecognizers>
+                        <Grid Padding="5,0" ColumnDefinitions="*, .25*">
                             <StackLayout Grid.Column="0">
                                 <Label Text="{Binding CreationDate}" />
-                                <Label Text="{Binding Title}" FontSize="20"/>
+                                <Label FontSize="20" Text="{Binding Title}" />
                             </StackLayout>
                             <Button
                                 Grid.Column="1"
+                                Command="{Binding BindingContext.RemoveCommand, Source={x:Reference _this}}"
+                                CommandParameter="{Binding}"
                                 HorizontalOptions="End"
-                                Text="Remove"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=RemoveCommand}"
-                                CommandParameter="{Binding .}"/>
+                                Text="Remove" />
+                        </Grid>
+                    </Border>
+                    <!--
+                    <Frame Padding="5" HeightRequest="70">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BindingContext.NavigateCommand, Source={x:Reference _this}}" CommandParameter="{Binding}" />
+                        </Frame.GestureRecognizers>
+                        <Grid Padding="5,0" ColumnDefinitions="*, .25*">
+                            <StackLayout Grid.Column="0">
+                                <Label Text="{Binding CreationDate}" />
+                                <Label FontSize="20" Text="{Binding Title}" />
+                            </StackLayout>
+                            <Button
+                                Grid.Column="1"
+                                Command="{Binding BindingContext.RemoveCommand, Source={x:Reference _this}}"
+                                CommandParameter="{Binding}"
+                                HorizontalOptions="End"
+                                Text="Remove" />
                         </Grid>
                     </Frame>
+                    -->
+
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+
             <CollectionView.EmptyView>
                 <StackLayout>
                     <Image
+                        HeightRequest="300"
+                        HorizontalOptions="Center"
                         Source="dotnet_bot.png"
-                        HorizontalOptions="Center"
-                        WidthRequest="200"
-                        HeightRequest="300"/>
+                        WidthRequest="200" />
                     <Label
-                        HorizontalOptions="Center"
                         FontSize="24"
-                        Text="No Data"/>
-                    <Label
                         HorizontalOptions="Center"
+                        Text="No Data" />
+                    <Label
                         FontSize="16"
-                        Text="Please enter new items!"/>
+                        HorizontalOptions="Center"
+                        Text="新しいアイテムを入力してね！" />
                 </StackLayout>
             </CollectionView.EmptyView>
+
         </CollectionView>
     </Grid>
 </ContentPage>

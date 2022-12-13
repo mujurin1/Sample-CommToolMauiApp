@@ -10,4 +10,3 @@ public partial class CounterPage : ContentPage
         BindingContext = vm;
     }
 }
-
