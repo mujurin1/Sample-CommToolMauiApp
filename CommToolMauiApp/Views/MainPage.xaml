@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage
     x:Class="CommToolMauiApp.Views.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -42,7 +43,9 @@
                             <RoundRectangle CornerRadius="5" />
                         </Border.StrokeShape>
                         <Border.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding BindingContext.NavigateCommand, Source={x:Reference _this}}" CommandParameter="{Binding}" />
+                            <TapGestureRecognizer
+                                Command="{Binding BindingContext.NavigateCommand, Source={x:Reference _this}}"
+                                CommandParameter="{Binding}" />
                         </Border.GestureRecognizers>
                         <Grid Padding="5,0" ColumnDefinitions="*, .25*">
                             <StackLayout Grid.Column="0">
@@ -57,25 +60,6 @@
                                 Text="Remove" />
                         </Grid>
                     </Border>
-                    <!--
-                    <Frame Padding="5" HeightRequest="70">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding BindingContext.NavigateCommand, Source={x:Reference _this}}" CommandParameter="{Binding}" />
-                        </Frame.GestureRecognizers>
-                        <Grid Padding="5,0" ColumnDefinitions="*, .25*">
-                            <StackLayout Grid.Column="0">
-                                <Label Text="{Binding CreationDate}" />
-                                <Label FontSize="20" Text="{Binding Title}" />
-                            </StackLayout>
-                            <Button
-                                Grid.Column="1"
-                                Command="{Binding BindingContext.RemoveCommand, Source={x:Reference _this}}"
-                                CommandParameter="{Binding}"
-                                HorizontalOptions="End"
-                                Text="Remove" />
-                        </Grid>
-                    </Frame>
-                    -->
 
                 </DataTemplate>
             </CollectionView.ItemTemplate>
@@ -97,7 +81,6 @@
                         Text="新しいアイテムを入力してね！" />
                 </StackLayout>
             </CollectionView.EmptyView>
-
         </CollectionView>
     </Grid>
 </ContentPage>

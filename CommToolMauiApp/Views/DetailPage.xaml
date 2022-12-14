@@ -1,36 +1,37 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="CommToolMauiApp.Views.DetailPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodel="clr-namespace:CommToolMauiApp.ViewModels"
-    x:Class="CommToolMauiApp.Views.DetailPage"             
-    x:DataType="viewmodel:DetailViewModel"
-    Title="DetailPage">
+    Title="DetailPage"
+    x:DataType="viewmodel:DetailViewModel">
 
     <StackLayout Padding="40">
-        <Label 
-            Text="{Binding Item.Id}"
-            VerticalOptions="Center" 
+        <Label
+            FontSize="10"
             HorizontalOptions="Center"
-            FontSize="10"/>
-        <Label 
-            Text="{Binding Item.CreationDate}"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"
-            FontSize="10"/>
-        <Label 
             Text="{Binding Item.Title}"
-            VerticalOptions="Center" 
+            VerticalOptions="Center" />
+        <Label
+            FontSize="10"
             HorizontalOptions="Center"
+            Text="{Binding Item.Checked}"
+            VerticalOptions="Center" />
+        <Label
+            Padding="30"
             FontSize="30"
-            Padding="30"/>
+            HorizontalOptions="Center"
+            Text="{Binding Item.Title}"
+            VerticalOptions="Center" />
         <Button
-            Text="Go Back"
             Command="{Binding BackCommand}"
-            HorizontalOptions="Center"/>
+            HorizontalOptions="Center"
+            Text="Go Back" />
         <Button
-            Text="Go to Another Page"
             Command="{Binding GoToAnotherCommand}"
-            HorizontalOptions="Center"/>
+            HorizontalOptions="Center"
+            Text="Go to Another Page" />
     </StackLayout>
 </ContentPage>

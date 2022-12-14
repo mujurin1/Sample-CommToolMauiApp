@@ -1,7 +1,16 @@
 ﻿namespace CommToolMauiApp.Model;
 
-public record Item(string Title)
+internal interface IItem
 {
-    public Guid Id { get; init; } = Guid.NewGuid();
-    public DateTime CreationDate { get; init; } = DateTime.Now;
+    string Title { get; }
+    int Count { get; }
+    bool Checked { get; }
 }
+
+internal record Item(string Title) : IItem
+{
+    public int Count { get; init; } = 0;
+    public bool Checked { get; init; } = false;
+}
+
+

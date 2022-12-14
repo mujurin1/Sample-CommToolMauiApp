@@ -5,21 +5,14 @@ namespace CommToolMauiApp.ViewModels;
 
 public partial class CounterViewModel : ObservableObject
 {
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(Rotation))]
+    [ObservableProperty] [NotifyPropertyChangedFor(nameof(Rotation))]
     private int _count;
 
     public double Rotation => _count % 360;
 
     [RelayCommand]
-    private void Increment()
-    {
-        Count += 1;
-    }
+    private void Increment() => Count += 1;
 
     [RelayCommand]
-    private void Clear()
-    {
-        Count = 0;
-    }
+    private void Clear() => Count = 0;
 }

@@ -1,16 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage
+    x:Class="CommToolMauiApp.Views.FlexLayoutPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="CommToolMauiApp.Views.FlexLayoutPage"
     Title="FlexLayout">
 
     <Grid>
         <ScrollView Orientation="Both">
             <FlexLayout
-                Wrap="Wrap"
+                HeightRequest="250"
                 JustifyContent="SpaceAround"
-                HeightRequest="250">
+                Wrap="Wrap">
                 <BindableLayout.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Bot #1</x:String>
@@ -25,13 +26,11 @@
                     <DataTemplate>
                         <StackLayout>
                             <Image
+                                HeightRequest="100"
+                                HorizontalOptions="Center"
                                 Source="dotnet_bot.png"
-                                HorizontalOptions="Center"
-                                WidthRequest="100"
-                                HeightRequest="100"/>
-                            <Label
-                                HorizontalOptions="Center"
-                                Text="{Binding .}"/>
+                                WidthRequest="100" />
+                            <Label HorizontalOptions="Center" Text="{Binding .}" />
                         </StackLayout>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>

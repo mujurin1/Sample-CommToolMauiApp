@@ -8,10 +8,7 @@ public partial class NetworkCheckViewModel : ObservableObject
 {
     private readonly IConnectivity _connectivity;
 
-    public NetworkCheckViewModel(IConnectivity connectivity)
-    {
-        _connectivity = connectivity;
-    }
+    public NetworkCheckViewModel(IConnectivity connectivity) => _connectivity = connectivity;
 
     [RelayCommand]
     private async Task CheckInternetAsync()
@@ -21,8 +18,5 @@ public partial class NetworkCheckViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private async Task GoToAnotherAsync()
-    {
-        await Shell.Current.GoToAsync($"{nameof(AnotherPage)}");
-    }
+    private async Task GoToAnotherAsync() => await Shell.Current.GoToAsync($"{nameof(AnotherPage)}");
 }

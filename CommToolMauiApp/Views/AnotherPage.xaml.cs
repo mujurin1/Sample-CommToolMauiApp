@@ -2,8 +2,5 @@
 
 public partial class AnotherPage : ContentPage
 {
-    public AnotherPage()
-    {
-        InitializeComponent();
-    }
+    public AnotherPage() => InitializeComponent();
 }
